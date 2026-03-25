@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+}
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    /* Dark theme as default — meeting app is always dark */
+    --background: 0.17 0.008 240;
+    --foreground: 0.94 0.01 240;
+    --card: 0.23 0.012 240;
+    --card-foreground: 0.94 0.01 240;
+    --popover: 0.23 0.012 240;
+    --popover-foreground: 0.94 0.01 240;
+    --primary: 0.77 0.15 170;
+    --primary-foreground: 0.1 0.008 240;
+    --secondary: 0.25 0.012 240;
+    --secondary-foreground: 0.94 0.01 240;
+    --muted: 0.25 0.012 240;
+    --muted-foreground: 0.74 0.015 240;
+    --accent: 0.77 0.15 170;
+    --accent-foreground: 0.1 0.008 240;
+    --destructive: 0.57 0.2 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.3 0.015 240 / 40%;
+    --input: 0.3 0.015 240;
+    --ring: 0.77 0.15 170;
+    --chart-1: 0.77 0.15 170;
+    --chart-2: 0.57 0.2 25;
+    --chart-3: 0.74 0.015 240;
+    --chart-4: 0.65 0.12 200;
+    --chart-5: 0.6 0.18 290;
+    --sidebar: 0.2 0.01 240;
+    --sidebar-foreground: 0.94 0.01 240;
+    --sidebar-primary: 0.77 0.15 170;
+    --sidebar-primary-foreground: 0.1 0.008 240;
+    --sidebar-accent: 0.25 0.012 240;
+    --sidebar-accent-foreground: 0.94 0.01 240;
+    --sidebar-border: 0.3 0.015 240 / 30%;
+    --sidebar-ring: 0.77 0.15 170;
+
+    /* Custom app tokens */
+    --meet-bg: oklch(0.17 0.008 240);
+    --meet-panel: oklch(0.22 0.01 240 / 90%);
+    --meet-tile: oklch(0.24 0.012 240);
+    --meet-border: oklch(0.3 0.015 240 / 35%);
+    --meet-teal: oklch(0.77 0.15 170);
+    --meet-red: oklch(0.57 0.2 25);
+    --meet-red-dark: oklch(0.5 0.2 25);
+    --meet-text: oklch(0.94 0.01 240);
+    --meet-text-muted: oklch(0.74 0.015 240);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .teal-glow {
+    box-shadow: 0 0 0 2px var(--meet-teal), 0 0 16px oklch(0.77 0.15 170 / 40%);
+  }
+
+  .glass-panel {
+    background: var(--meet-panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--meet-border);
+  }
+
+  .ctrl-btn {
+    @apply flex flex-col items-center gap-1 p-2 rounded-full text-white hover:bg-white/10 transition-colors cursor-pointer select-none;
+  }
+
+  .ctrl-btn.active {
+    @apply bg-white/15;
+  }
+
+  .ctrl-btn.danger {
+    @apply bg-[--meet-red] hover:opacity-90 rounded-xl px-4;
+  }
+}
